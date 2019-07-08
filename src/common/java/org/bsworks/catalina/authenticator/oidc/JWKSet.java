@@ -53,7 +53,7 @@ class JWKSet {
 				final JSONObject keyDef = keysProp.getJSONObject(n);
 				if (keyDef.optString("kty").equals("RSA")
 						&& keyDef.optString("use").equals("sig"))
-					this.keys.put(keyDef.getString("kid"),
+					this.keys.put(keyDef.optString("kid", "default"),
 							keyFactory.generatePublic(new RSAPublicKeySpec(
 									Base64.decodeInteger(keyDef.getString("n")
 											.getBytes(ASCII)),

@@ -1461,7 +1461,7 @@ public abstract class BaseOpenIDConnectAuthenticator
 
 				final Signature sig = Signature.getInstance("SHA256withRSA");
 				sig.initVerify(this.ops.getOPConfiguration(opDesc.getIssuer())
-						.getJWKSet().getKey(header.getString("kid")));
+						.getJWKSet().getKey(header.optString("kid", "default")));
 				sig.update(data.getBytes("ASCII"));
 
 				return sig.verify(signature);
