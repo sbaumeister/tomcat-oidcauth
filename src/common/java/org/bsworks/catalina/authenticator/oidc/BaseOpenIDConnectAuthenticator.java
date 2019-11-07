@@ -1658,6 +1658,9 @@ public abstract class BaseOpenIDConnectAuthenticator
 			return this.hostBaseURI + request.getContextPath();
 
 		String requestURL = request.getRequestURL().toString();
+		if (requestURL.endsWith(Constants.FORM_ACTION)) {
+			requestURL = requestURL.substring(0, requestURL.length() - Constants.FORM_ACTION.length());
+		}
 		if (requestURL.endsWith("/")) {
 			requestURL = requestURL.substring(0, requestURL.length() - 1);
 		}
