@@ -1657,13 +1657,6 @@ public abstract class BaseOpenIDConnectAuthenticator
 		if (this.hostBaseURI != null)
 			return this.hostBaseURI + request.getContextPath();
 
-		final StringBuilder baseURLBuf = new StringBuilder(64);
-		baseURLBuf.append(request.getScheme()).append("://").append(request.getServerName());
-		final int port = request.getServerPort();
-		if (port != 443)
-			baseURLBuf.append(':').append(port);
-		baseURLBuf.append(request.getContextPath());
-
-		return baseURLBuf.toString();
+		return request.getRequestURL().toString();
 	}
 }
