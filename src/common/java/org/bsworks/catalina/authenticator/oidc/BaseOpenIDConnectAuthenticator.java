@@ -1662,7 +1662,7 @@ public abstract class BaseOpenIDConnectAuthenticator
 			requestURL = requestURL.substring(0, requestURL.length() - Constants.FORM_ACTION.length());
 		}
 		if (requestURL.endsWith("/")) {
-			requestURL = requestURL.substring(0, requestURL.length() - 1);
+			requestURL = requestURL.replaceAll("/+$", "");
 		}
 		return requestURL;
 	}
